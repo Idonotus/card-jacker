@@ -1,10 +1,7 @@
 use std::mem::ManuallyDrop;
+use crate::cards::Card;
 
 struct Player {
-
-}
-
-struct Card {
 
 }
 
@@ -24,6 +21,8 @@ enum GameType {
 	Number,
 	Player,
 	Card,
+	Action,
+
 }
 
 impl GameVar {
@@ -48,4 +47,5 @@ pub trait Action {
 		}
 	}
 	fn run_action_unsafe(&self, action_context: &ActionContext) -> Option<&'static str>;
+	fn save(&self) -> &str;
 }
